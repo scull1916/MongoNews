@@ -1,9 +1,14 @@
 // Dependencies
 var express = require("express");
-var mongojs = require("mongojs");
+var bodyParser = require("body-parser");
+var mongoose = require("mongoose");
+var 
 // Require request and cheerio. This makes the scraping possible
 var request = require("request");
 var cheerio = require("cheerio");
+
+//Set Handlebars
+var exphbs = require("express-handlebars");
 
 // Initialize Express
 var app = express();
