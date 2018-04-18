@@ -2,7 +2,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
-var 
+
 // Require request and cheerio. This makes the scraping possible
 var request = require("request");
 var cheerio = require("cheerio");
@@ -10,18 +10,26 @@ var cheerio = require("cheerio");
 //Set Handlebars
 var exphbs = require("express-handlebars");
 
+//Require all models
+var db = require("./models");
+
+var PORT = 3000;
+
 // Initialize Express
 var app = express();
 
-// Database configuration
-var databaseUrl = "scraper";
-var collections = ["scrapedData"];
+//++++++++++++++++++++
+//Configure middleware
+//++++++++++++++++++++
 
-// Hook mongojs configuration to the db variable
-var db = mongojs(databaseUrl, collections);
-db.on("error", function(error) {
-  console.log("Database Error:", error);
-});
+//Use bodyParser to handle form submissions
+app.use = (bodyParser.urlencoded({extended:true}));
+
+//Use express.static to serve the public folder as a static directory
+app.use = (express.static("public"));
+
+//Connect to the Mongo DB
+
 
 // Main route (simple Hello World Message)
 app.get("/", function(req, res) {
