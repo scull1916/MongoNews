@@ -29,7 +29,7 @@ app.use = (bodyParser.urlencoded({extended:true}));
 app.use = (express.static("public"));
 
 //Connect to the Mongo DB
-
+mongoose.connect("mongodb://localhost/MongoNews");
 
 // Main route (simple Hello World Message)
 app.get("/", function(req, res) {
